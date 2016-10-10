@@ -1,7 +1,7 @@
-(defproject de.kolov/ak-request "0.1.0"
+(defproject de.kolov/ak-request "0.2.0"
   :description "HTTP request lib for clojure"
 
-  :url "https://www.kolov.de"
+  :url "https://www.kolov.de/clojure/libs"
 
   :license {:name "The MIT License (MIT)"
             :url "https://opensource.org/licenses/MIT"}
