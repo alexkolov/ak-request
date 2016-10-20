@@ -33,9 +33,12 @@
         status (:status resp)
         body (if (= method :get)
                (:body resp)
-               (json/parse-string (:body resp) true))]
+               (json/parse-string (:body resp) true))
+        stat (cond
+               (and (>= status 200) (< status 300)) :ok
+               :else :err)]
 
-    {:stat :ok :body body :status status}))
+    {:stat stat :body body :status status}))
 
 (sp/def ::min-pre-request (sp/keys :req-un [::url]))
 
