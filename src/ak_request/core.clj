@@ -20,7 +20,7 @@
       (str "http://" X)
       url)))
 
-(defn call! [{:keys [url method] :as opts}]
+(defn call! [{:keys [url method ks] :as opts}]
   {:pre [(sp/valid? ::min-request opts)]}
 
   (let [predefined (if (= method :get)
@@ -31,9 +31,9 @@
                   (assoc :url url*))
         resp (http/request opts*)
         status (:status resp)
-        body (if (= method :get)
-               (:body resp)
-               (json/parse-string (:body resp) true))
+        body (if ks
+               (json/parse-string (:body resp) true)
+               (:body resp))
         stat (cond
                (and (>= status 200) (< status 300)) :ok
                :else :err)]

@@ -3,7 +3,7 @@ HTTP request lib for clojure
 
 ## Usage
 
-FIXME
+(post-call! {:url "www.domain.de" :body {} :ks true})
 
 ## License
 
